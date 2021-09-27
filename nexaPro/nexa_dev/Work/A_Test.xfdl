@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="A_Test" width="1280" height="720" titletext="New Form" onload="A_Test_onload">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Static id="sta_01" taborder="0" text="hello nexacro~" left="79" top="108" width="120" height="60"/>
+        <Button id="btn_01" taborder="1" text="버튼이다" left="234" top="112" width="120" height="56" onclick="btn_01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.A_Test_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	alert("화면로딩");
+};
+
+this.btn_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	alert("버튼을 클릭함");
+	trace("btn_01_onclick 이벤트");
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="B_Static" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Static id="sta_01" taborder="0" text="Static test&#13;&#10;여러 줄 쓰기도 가능&#13;&#10;컨트롤 엔터" left="117" top="104" width="120" height="60" onclick="Static00_onclick"/>
+        <Button id="btn_01" taborder="1" text="버튼입니다" left="329" top="105" width="120" height="50" onclick="btn_01_onclick"/>
+        <TextArea id="edt_01" taborder="2" left="110" top="182" width="170" height="80"/>
+        <Button id="btn_02" taborder="3" text="edit button" left="329" top="237" width="120" height="50" onclick="btn_02_onclick"/>
+        <Static id="sta_02" taborder="4" text="Static01" left="110" top="320" width="120" height="60" onclick="Static01_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+nexacro.getApplication().trace(obj.id);
+	nexacro.getApplication().trace(e);
+};
+// 코드 기술
+	
+	// this : 현재 작업 중인 Form
+	// Button00_onclick : 함수 이름
+	//		Button00 : 클릭하는 버튼의 아이디
+	// 		onclick : 이벤트 종류
+	// function : 클릭 시 작동될 콜백 함수
+	// obj : 클릭한 버튼 객체
+	// e : 이벤트 정보를 가진 객체
+
+
+this.btn_02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var str = this.edt_01.value;
+	alert(str);
+	
+	this.edt_01.set_value("춥다 겨울이 온다");
+	this.sta_02.set_text(str);
+	
+};
+]]></Script>
+  </Form>
+</FDL>

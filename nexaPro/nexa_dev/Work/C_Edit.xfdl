@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="C_Edit" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Edit id="edt_01" taborder="0" left="68" top="63" width="202" height="57" onchanged="edt_01_onchanged" displaynulltext="아무거나 입력하세요."/>
+        <Static id="sta_01" taborder="1" text="&lt;일반 Edit" left="68" top="15" width="115" height="38"/>
+        <Edit id="edt_02" taborder="2" left="68" top="200" width="202" height="57" readonly="true" displaynulltext="읽기 전용입니다"/>
+        <Static id="sta_02" taborder="3" text="&lt;읽기전용 Edit" left="68" top="152" width="115" height="38"/>
+        <Edit id="edt_03" taborder="4" left="68" top="328" width="202" height="57" onchanged="edt_03_onchanged" displaynulltext="비밀번호 edit 입니다" password="true" usecontextmenu="false"/>
+        <Static id="sta_03" taborder="5" text="&lt;비밀번호 Edit" left="68" top="280" width="115" height="38"/>
+        <Edit id="edt_05" taborder="6" left="68" top="572" width="202" height="57" inputtype="number" displaynulltext="숫자만 입력가능"/>
+        <Static id="sta_05" taborder="7" text="&lt;숫자만 허용하는 Edit" left="68" top="524" width="162" height="38"/>
+        <Edit id="edt_04" taborder="8" left="68" top="453" width="202" height="57" inputtype="english" maxlength="4" displaynulltext="영어만 입력가능"/>
+        <Static id="sta_04" taborder="9" text="&lt;영어로만 표기하는 Edit/MaxLength" left="68" top="410" width="197" height="38"/>
+        <CheckBox id="chk_01" taborder="10" text="비밀번호표시" left="200" top="290" width="150" height="20"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+
+this.edt_01_onchanged = function(obj:nexacro.Edit,e:nexacro.ChangeEventInfo)
+{
+	alert(e.prevalue);
+	this.edt_02.set_value(e.postvalue);
+};
+
+this.chk_01_onclick = function(obj:nexacro.CheckBox,e:nexacro.ChangeEventInfo)
+{
+	alert(obj.value);
+	this.edt_03.set_password(!obj.value)
+};]]></Script>
+  </Form>
+</FDL>
