@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="K_ImaggeViewer" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <ImageViewer id="img_01" taborder="0" left="42" top="44" width="283" height="251" image="url('imagerc::cat.jpg')" onclick="img_01_onclick"/>
+        <ImageViewer id="img_02" taborder="1" left="42" top="320" width="283" height="150"/>
+        <Button id="btn_01" taborder="2" text="도넛" left="353" top="320" width="177" height="50" onclick="btn_01_onclick"/>
+        <Button id="btn_2" taborder="3" text="아이스크림" left="353" top="420" width="177" height="50" onclick="btn_2_onclick"/>
+        <Combo id="cbo_01" taborder="4" text="Combo00" left="388" top="91" width="222" height="62" innerdataset="ds_image" codecolumn="CODE" datacolumn="DATA" onitemchanged="cbo_01_onitemchanged"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.btn_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.img_02.set_image("url('imagerc::donut.png')");
+	this.img_02.set_stretch('fit'); 
+};
+
+this.btn_2_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.img_02.set_image("url('imagerc::icecream.png')");
+	this.img_02.set_stretch('fixaspectratio');
+};
+
+
+this.cbo_01_onitemchanged = function(obj:nexacro.Combo,e:nexacro.ItemChangeEventInfo)
+{
+	var imgUrl = this.cbo_01.value; //코드
+	this.img_02.set_image("url('"+imgUrl+"')");
+	this.img_02.set_stretch('fit');
+
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_image">
+        <ColumnInfo>
+          <Column id="CODE" type="STRING" size="256"/>
+          <Column id="DATA" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CODE">imagerc::cat.jpg</Col>
+            <Col id="DATA">냥</Col>
+          </Row>
+          <Row>
+            <Col id="CODE">imagerc::dog.jpg</Col>
+            <Col id="DATA">멍</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

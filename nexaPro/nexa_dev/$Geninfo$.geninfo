@@ -8,7 +8,7 @@
       <XCSS rule_version="1.04"/>
       <Script rule_version="1.02"/>
     </Rule>
-    <Info project="C:\NEXACRO\nexaPro\nexa_dev\" generated="C:\Users\82106\OneDrive\문서\nexacro\17.1\outputs\nexa_dev\">
+    <Info project="C:\Users\82106\git\KH-NEXACRO\nexaPro\nexa_dev\" generated="C:\Users\82106\OneDrive\문서\nexacro\17.1\outputs\nexa_dev\">
       <File url="environment.xml" checksum="20210927174145" errormsg=""/>
       <File url="typedefinition.xml" checksum="20210927174629" errormsg=""/>
       <File url="appvariables.xml" checksum="20210927174145" errormsg=""/>
@@ -20,12 +20,15 @@
       <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\Grid.json" checksum="20200128141818" errormsg=""/>
       <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\ListView.json" checksum="20200128141820" errormsg=""/>
       <File url="C:\Program Files (x86)\nexacro\17.1\nexacro17lib\component\DeviceAPI.json" checksum="20200128141818" errormsg=""/>
+      <File url="Work\G_Radio.xfdl" checksum="20210928155255" errormsg=""/>
       <File url="Application_Desktop.xadl" checksum="20210927174145" errormsg=""/>
-      <File url="Work\A_Test.xfdl" checksum="20210927185241" errormsg=""/>
-      <File url="Work\B_Static.xfdl" checksum="20210927180911" errormsg=""/>
-      <File url="Work\C_Edit.xfdl" checksum="20210927191450" errormsg=""/>
-      <File url="Work\D_MaskEdit.xfdl" checksum="20210927194121" errormsg=""/>
-      <File url="Work\F_CheckBox.xfdl" checksum="20210927194816" errormsg=""/>
+      <File url="Work\H_Combo.xfdl" checksum="20210928155405" errormsg=""/>
+      <File url="Work\I_Caledar.xfdl" checksum="20210928155546" errormsg=""/>
+      <File url="Work\I_Calendar.xfdl" checksum="20210928161237" errormsg=""/>
+      <File url="Work\J_Container.xfdl" checksum="20210928165932" errormsg=""/>
+      <File url="Work\K_ImaggeViewer.xfdl" checksum="20210928171750" errormsg=""/>
+      <File url="Work\L_Grid.xfdl" checksum="20210928180116" errormsg=""/>
+      <File url="Work\M_Emp.xfdl" checksum="20210928190000" errormsg=""/>
     </Info>
   </GenInfo>
 </root>

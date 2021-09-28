@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="J_Container" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Static id="Static00" taborder="0" text="&gt;Div 요소" left="15" top="25" width="175" height="65"/>
+        <Div id="div_01" taborder="1" text="" left="34" top="76" width="372" height="249" background="#b0e7e5">
+          <Layouts>
+            <Layout>
+              <Edit id="edt_01" taborder="0" left="28" top="65" width="168" height="53"/>
+              <Button id="btn_01" taborder="1" text="확인" left="214" top="65" width="109" height="53" onclick="div_01_btn_01_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Tab id="Tab00" taborder="2" tabindex="0" left="445" top="76" width="345" height="247">
+          <Tabpages>
+            <Tabpage id="Tabpage1" text="Tabpage1">
+              <Layouts>
+                <Layout>
+                  <Static id="Static00" taborder="0" text="1페이지 입니다." left="25" top="8" width="201" height="74"/>
+                  <Edit id="edt_01" taborder="1" left="28" top="114" width="153" height="65"/>
+                  <Button id="btn_01" taborder="2" text="내부" left="189" top="114" width="96" height="59" onclick="Tab00_Tabpage1_btn_01_onclick"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+            <Tabpage id="Tabpage2" text="Tap2">
+              <Layouts>
+                <Layout>
+                  <Static id="Static00" taborder="0" text="2페이지 입니다." left="39" top="39" width="138" height="44"/>
+                </Layout>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+        <Static id="Static00_00" taborder="3" text="&gt;Tap 요소" left="437" top="20" width="175" height="65"/>
+        <Button id="btn_01" taborder="4" text="외부" left="672" top="10" width="98" height="52" onclick="btn_01_onclick"/>
+        <PopupDiv id="pdv_01" text="PopupDiv00" visible="false" left="34" top="350" width="183" height="238" background="#ed77e3">
+          <Layouts>
+            <Layout>
+              <Button id="btn_01" taborder="0" text="Menu01" left="28" top="22" width="130" height="24" onclick="btn_com_click"/>
+              <Button id="btn_02" taborder="1" text="Menu02" left="28" top="100" width="130" height="24" onclick="btn_com_click"/>
+              <Button id="btn_03" taborder="2" text="Menu03" left="28" top="174" width="130" height="24" onclick="btn_com_click"/>
+            </Layout>
+          </Layouts>
+        </PopupDiv>
+        <GroupBox id="GroupBox00" taborder="5" text="myHobbies" left="255" top="356" width="242" height="230"/>
+        <Radio id="Radio00" taborder="6" left="298" top="390" width="102" height="146" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn">
+          <Dataset id="innerdataset">
+            <ColumnInfo>
+              <Column id="codecolumn" size="256"/>
+              <Column id="datacolumn" size="256"/>
+            </ColumnInfo>
+            <Rows>
+              <Row>
+                <Col id="codecolumn">A</Col>
+                <Col id="datacolumn">축구</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">B</Col>
+                <Col id="datacolumn">농구</Col>
+              </Row>
+              <Row>
+                <Col id="codecolumn">C</Col>
+                <Col id="datacolumn">배구</Col>
+              </Row>
+            </Rows>
+          </Dataset>
+        </Radio>
+        <Button id="btn_02" taborder="7" text="팝업" left="526" top="383" width="154" height="61" onclick="btn_02_onclick"/>
+        <Edit id="edt_01" taborder="8" left="528" top="468" width="152" height="63"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/*
+	컨테이너 컴포넌트
+	Div, Tab, PopupDiv
+	
+	Div 요소 안에있는 다른 컴포넌트를 참조할때 
+	해당 div 를 먼저 찾은뒤 this.div 아이디.form.컴포넌트 아이디 형태로 접근 
+
+
+*/
+
+this.div_01_btn_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var str = this.div_01.form.edt_01.value;
+	alert(str);
+};
+
+this.btn_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var str  = this.Tab00.Tabpage1.form.edt_01.value;
+	this.fn_out(str);
+	
+};
+
+this.fn_out = function(strVal){
+	alert(strVal);
+}
+
+this.Tab00_Tabpage1_btn_01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+		var str  = this.Tab00.Tabpage1.form.edt_01.set_value("탭에 값을 셋팅");
+
+};
+
+
+
+this.btn_com_click = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+
+this.pdv_01.closePopup(obj.text);
+	
+};
+
+this.btn_02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var x = parseInt(obj.width)-60;
+	var y = parseInt(obj.height);
+	
+	this.pdv_01.trackPopupByComponent(obj,x,y,200,300,"fn_callback");
+};
+
+this.fn_callback = function(popupId,param){
+
+	alert(popupId);
+	this.edt_01.set_value(param);
+
+}
+
+]]></Script>
+  </Form>
+</FDL>
