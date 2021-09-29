@@ -1,40 +1,41 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="div_search" width="1280" height="720" titletext="New Form">
+  <Form id="M_Emp" width="1280" height="720" titletext="New Form" onload="M_Emp_onload">
     <Layouts>
       <Layout height="720" width="1280">
-        <Static id="sta_01" taborder="0" text="&gt;사원관리" left="22" top="22" width="207" height="54" font="bold 16pt/normal &quot;Arial&quot;,&quot;HY중고딕&quot;"/>
-        <Div id="div_01" taborder="1" text="" left="24" top="86" width="1012" height="101" background="#55afe6">
+        <Static id="sta_01" taborder="0" text="&gt; 사원 관리" left="47" top="20" width="123" height="40" font="bold 16pt/normal &quot;Arial&quot;"/>
+        <Div id="div_search" taborder="1" left="40" top="60" width="880" height="61" background="aquamarine">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" text="*Name" left="39" top="27" width="188" height="43"/>
-              <Edit id="edt_name" taborder="1" left="116" top="27" width="188" height="43"/>
-              <Static id="Static00_00" taborder="2" text="*Dept" left="359" top="27" width="188" height="43"/>
-              <Combo id="cbo_dept" taborder="3" left="424" top="27" width="188" height="43" innerdataset="ds_dept" codecolumn="DEPT_CD" datacolumn="DEPT_NAME"/>
+              <Static id="Static00" taborder="0" text="* Name" left="15" top="14" width="65" height="32"/>
+              <Edit id="edt_name" taborder="1" left="83" top="14" width="134" height="32"/>
+              <Static id="Static00_00" taborder="2" text="* Dept" left="261" top="14" width="59" height="32"/>
+              <Combo id="cbo_dept" taborder="3" text="" left="319" top="14" width="131" height="32" onitemchanged="div_search_cbo_dept_onitemchanged" innerdataset="ds_dept" codecolumn="DEPT_CD" datacolumn="DEPT_NAME"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="2" left="24" top="204" width="1012" height="212" binddataset="ds_emp" cellsizingtype="col" autofittype="col">
+        <Grid id="Grid00" taborder="2" left="39" top="150" width="881" height="231" binddataset="ds_emp" cellsizingtype="col" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="48"/>
-                <Column size="63"/>
+                <Column size="68"/>
+                <Column size="73"/>
+                <Column size="132"/>
+                <Column size="111"/>
+                <Column size="103"/>
+                <Column size="87"/>
+                <Column size="106"/>
+                <Column size="45"/>
+                <Column size="70"/>
                 <Column size="80"/>
-                <Column size="145"/>
-                <Column size="160"/>
-                <Column size="160"/>
-                <Column size="96"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="50"/>
+                <Column size="45"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
                 <Row size="24"/>
+                <Row size="24" band="summ"/>
               </Rows>
               <Band id="head">
                 <Cell text="No."/>
@@ -49,30 +50,67 @@
                 <Cell col="9" text="Manager"/>
                 <Cell col="10" text="Hire Date"/>
                 <Cell col="11" text="Ent Date"/>
-                <Cell col="12" text="Ent YN" displaytype="checkboxcontrol"/>
+                <Cell col="12" displaytype="checkboxcontrol"/>
               </Band>
               <Band id="body">
                 <Cell text="expr:currow+1"/>
-                <Cell col="1" text="bind:EMP_ID" textAlign="center"/>
-                <Cell col="2" text="bind:EMP_NAME"/>
-                <Cell col="3" text="bind:EMP_NO" displaytype="mask" edittype="mask" maskedittype="string" maskeditformat="######-#######"/>
-                <Cell col="4" text="bind:EMAIL" tooltiptext="bind:EMAIL"/>
+                <Cell col="1" text="bind:EMP_ID" textAlign="center" edittype="normal"/>
+                <Cell col="2" text="bind:EMP_NAME" edittype="normal"/>
+                <Cell col="3" text="bind:EMP_NO" displaytype="mask" edittype="mask" maskeditformat="######-#######" maskedittype="string"/>
+                <Cell col="4" text="bind:EMAIL" tooltiptext="bind:EMAIL" edittype="normal"/>
                 <Cell col="5" text="bind:PHONE" displaytype="mask" edittype="mask" maskeditformat="###-####-####" maskedittype="string"/>
                 <Cell col="6" text="bind:DEPT_CODE" displaytype="combotext" edittype="combo" combodataset="ds_dept" combocodecol="DEPT_CD" combodatacol="DEPT_NAME"/>
-                <Cell col="7" text="bind:SALARY" edittype="normal"/>
+                <Cell col="7" text="bind:SALARY" displaytype="number" edittype="normal"/>
                 <Cell col="8" text="bind:BONUS" displaytype="number"/>
-                <Cell col="9" text="bind:MANAGER_ID" displaytype="combotext" edittype="combo" combodataset="ds_emp" combocodecol="EMP_ID" combodatacol="EMP_NAME"/>
+                <Cell col="9" text="bind:MANAGER_ID" displaytype="combotext" edittype="none" combodataset="ds_emp" combocodecol="EMP_ID" combodatacol="EMP_NAME"/>
                 <Cell col="10" text="bind:HIRE_DATE" displaytype="calendarcontrol" edittype="date"/>
                 <Cell col="11" text="bind:ENT_DATE" displaytype="calendarcontrol" edittype="date"/>
-                <Cell col="12" text="bind:ENT_YN" displaytype="checkboxcontrol" edittype="checkbox" checkboxtruevalue="Y" checkboxfalsevalue="N"/>
+                <Cell col="12" text="bind:ENT_YN" edittype="checkbox" displaytype="checkboxcontrol" checkboxtruevalue="Y" checkboxfalsevalue="N"/>
+              </Band>
+              <Band id="summary">
+                <Cell text="Total"/>
+                <Cell col="1"/>
+                <Cell col="2"/>
+                <Cell col="3"/>
+                <Cell col="4"/>
+                <Cell col="5"/>
+                <Cell col="6"/>
+                <Cell col="7" text="expr:dataset.getSum(&quot;SALARY&quot;)" textAlign="right" displaytype="number"/>
+                <Cell col="8"/>
+                <Cell col="9"/>
+                <Cell col="10"/>
+                <Cell col="11"/>
+                <Cell col="12"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="del_row" taborder="3" text="Del Row" left="535" top="56" width="115" height="25" onclick="Button00_onclick"/>
-        <Button id="Button00_00" taborder="4" text="Add Row" left="660" top="56" width="115" height="25"/>
-        <Button id="Button00_01" taborder="5" text="Search" left="785" top="56" width="115" height="25" onclick="Button00_01_onclick"/>
-        <Button id="Button00_02" taborder="6" text="Save" left="910" top="56" width="115" height="25"/>
+        <Button id="btn_addRow" taborder="3" text="Add Row" left="663" top="20" width="75" height="29" onclick="btn_addRow_onclick"/>
+        <Button id="btn_Search" taborder="4" text="Search" left="753" top="20" width="75" height="29" onclick="btn_Search_onclick"/>
+        <Button id="btn_Save" taborder="5" text="Save" left="843" top="20" width="75" height="29" onclick="btn_Save_onclick"/>
+        <Button id="btn_delRow" taborder="6" text="Del Row" left="573" top="20" width="75" height="29" onclick="btn_delRow_onclick"/>
+        <Grid id="Grid01" taborder="7" left="43" top="419" width="337" height="154" binddataset="ds_search">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="NAME"/>
+                <Cell col="1" text="DEPT"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:NAME"/>
+                <Cell col="1" text="bind:DEPT"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>
@@ -177,6 +215,9 @@
         </ColumnInfo>
         <Rows>
           <Row>
+            <Col id="DEPT_CD">ALL</Col>
+          </Row>
+          <Row>
             <Col id="DEPT_CD">D1</Col>
             <Col id="DEPT_NAME">인사관리부</Col>
           </Row>
@@ -214,7 +255,124 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_search">
+        <ColumnInfo>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DEPT" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row/>
+          <Row/>
+        </Rows>
+      </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[include "lib_com::L_common.xjs";
+
+this.M_Emp_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.div_search.form.cbo_dept.set_index(0);
+	this.fn_search();
+};
+
+this.btn_Search_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fn_search();
+};
+
+this.btn_delRow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_emp.deleteRow(this.ds_emp.rowposition);
+};
+
+this.btn_addRow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_emp.addRow();
+};
+
+this.fn_search = function () {
+	var sSvcNm = "selectEmp"; //서블릿 url맵핑
+	var sSvcId = "selectEmp";
+	var strUrl = this.gfn_url() + sSvcNm;
+	alert(strUrl);
+	var sInDataSet = "ds_search=ds_search"; // 좌측이 servlet에서 key로 받음
+	var sOutDataSet = "ds_emp=ds_emp";
+	var sArgument = "";
+	
+	this.transaction(sSvcId, strUrl, sInDataSet, sOutDataSet, sArgument, "fn_CallBack");
+};
+
+this.fn_save = function () {
+	var sSvcNm = "saveEmp"; //서블릿 url맵핑
+	var sSvcId = "saveEmp";
+	var strUrl = this.gfn_url() + sSvcNm;
+	alert(strUrl);
+	var sInDataSet = "ds_emp=ds_emp:A"; // 좌측이 servlet에서 key로 받음
+	var sOutDataSet = "";
+	var sArgument = "";
+	
+	this.transaction(sSvcId, strUrl, sInDataSet, sOutDataSet, sArgument, "fn_CallBack");
+};
+
+
+
+
+this.fn_CallBack = function(id, errorCode, errorMsg) {
+	if (errorCode < 0) {
+		alert(errorMsg);
+		return;
+	}
+	
+	switch(id) {
+	case "selectEmp":
+		alert("조회되었습니다");
+		trace(this.ds_emp.saveXML());
+		if (this.ds_emp.getRowCount() > 0) {
+			// 로직 구현
+		}
+		break;
+	case "saveEmp":
+		alert("저장되었습니다");
+		this.fn_search();
+		break;
+	default:
+		break;
+	}
+};
+
+this.btn_Save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	if(this.fn_saveBef()){
+		this.fn_save();
+	}
+};
+
+this.fn_saveBef = function(){
+	for(var i = 0 ; i< this.ds_emp.getRowCount();i++){
+	
+		if(this.gfn_isNull(this.ds_emp.getColumn(i,"EMP_ID"))){
+			alert("사원의 id를 입력하세요");
+			return false;
+		}
+	
+		if(this.gfn_isNull(this.ds_emp.getColumn(i,"EMP_NAME"))){
+			alert("사원의 이름를 입력하세요");
+			return false;
+		}
+	
+		if(this.gfn_isNull(this.ds_emp.getColumn(i,"EMP_NO"))){
+			alert("사원의 주민번호를 입력하세요");
+			return false;
+		}
+		
+	}
+	return true;
+
+}
+
+]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="div_search.form.cbo_dept" propid="value" datasetid="ds_search" columnid="DEPT"/>
+      <BindItem id="item1" compid="div_search.form.edt_name" propid="value" datasetid="ds_search" columnid="NAME"/>
+    </Bind>
   </Form>
 </FDL>

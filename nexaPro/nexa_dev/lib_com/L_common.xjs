@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[/***********************************************************************************************
+* name         : gfn_isNull
+* desc         : Null  여부 체크
+* argument     : sValue(문자열)
+* return Type  : boolean
+************************************************************************************************/
+this.gfn_isNull = function(sValue){
+
+	if(new String(sValue).valueOf() == "undefined"){
+		return true;
+	}
+
+	if(sValue == null){
+		return true;
+	}
+	
+	var v_ChkStr = new String(sValue);
+	
+
+	
+	if(v_ChkStr == ""){
+		return true;
+	}
+	
+	return false;
+	
+}
+/***********************************************************************************************
+* name         : gfn_url
+* desc         : url 연동
+* argument     : 
+* return Type  : strUrl
+************************************************************************************************/
+this.gfn_url = function(){
+	var strUrl = "http://localhost:8090/nexaPro/";
+	return strUrl;
+}
+]]></Script>
